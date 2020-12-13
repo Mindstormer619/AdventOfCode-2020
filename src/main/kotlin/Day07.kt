@@ -1,6 +1,12 @@
 @file:Suppress("FunctionName")
 
+/**
+ * Maps {bag color -> bag colors that contain this color}
+ */
 typealias ContainedGraph = MutableMap<String,MutableSet<String>>
+/**
+ * Maps {bag color -> bag configuration contained in this bag color}
+ */
 typealias BagGraph = MutableMap<String, Set<Bag>>
 
 private val hasBagRegex = Regex("""(\w+ \w+) bags contain ([0-9].*)\.""")
