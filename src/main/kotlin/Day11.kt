@@ -1,8 +1,11 @@
 fun main() {
 	val grid = readGrid("src/main/resources/day11.input")
 
-	val occupied = countSeatsOnceStatic(grid)
+	val occupied = countSeatsOnceStatic(grid.deepClone())
 	println(occupied)
+
+	val occupied2 = countSeatsOnceStaticWithSightline(grid.deepClone())
+	println(occupied2)
 }
 
 private typealias Grid = Array<CharArray>
@@ -51,6 +54,31 @@ private fun countSeatsOnceStatic(grid: Grid): Int {
 	return grid.countOccupied()
 }
 
+private fun countSeatsOnceStaticWithSightline(grid: Grid): Int {
+	var pastState: Grid
+
+	var isChanged: Boolean
+	do {
+		pastState = grid.deepClone()
+		isChanged = false
+		for (r in grid.indices) {
+			for (c in grid[r].indices) {
+				val seat = pastState[r][c]
+				if (seat == 'L' && pastState.countSightline('#', r, c) == 0) {
+					grid[r][c] = '#'
+					isChanged = true
+				}
+				else if (seat == '#' && pastState.countSightline('#', r, c) >= 5) {
+					grid[r][c] = 'L'
+					isChanged = true
+				}
+			}
+		}
+	} while (isChanged)
+
+	return grid.countOccupied()
+}
+
 private fun Grid.countNeighbors(state: Char, r: Int, c: Int): Int {
 	val neighborIndices = listOf(
 		r-1 to c-1, r-1 to c, r-1 to c+1,
@@ -65,6 +93,43 @@ private fun Grid.countNeighbors(state: Char, r: Int, c: Int): Int {
 			continue
 		}
 	}
+	return count
+}
+
+private fun Grid.countSightline(state: Char, row: Int, col: Int): Int {
+	var count = 0
+
+	val axes = mapOf(
+		'→' to {coords: Pair<Int, Int> -> coords.first to coords.second+1},
+		'←' to {coords: Pair<Int, Int> -> coords.first to coords.second-1},
+		'↓' to {coords: Pair<Int, Int> -> coords.first+1 to coords.second},
+		'↑' to {coords: Pair<Int, Int> -> coords.first-1 to coords.second},
+		'↗' to {coords: Pair<Int, Int> -> coords.first-1 to coords.second+1},
+		'↖' to {coords: Pair<Int, Int> -> coords.first-1 to coords.second-1},
+		'↘' to {coords: Pair<Int, Int> -> coords.first+1 to coords.second+1},
+		'↙' to {coords: Pair<Int, Int> -> coords.first+1 to coords.second-1}
+	)
+
+	val rowIndices = indices
+	val colIndices = this[0].indices
+
+	for (axis in axes.values) {
+		var coords = row to col
+		nextCell@while(true) {
+			coords = axis(coords)
+			if (coords.first in rowIndices && coords.second in colIndices) {
+				if (this[coords.first][coords.second] == state) {
+					count++
+					break
+				}
+				else if (this[coords.first][coords.second] == '.') {
+					continue@nextCell
+				}
+			}
+			break
+		}
+	}
+
 	return count
 }
 
