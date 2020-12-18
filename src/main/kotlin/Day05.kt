@@ -1,4 +1,4 @@
-fun main() {
+fun day05() {
 	val seats = readFileAndProcess("src/main/resources/day05.input") { inputRow ->
 		inputRow
 			.replace('F', '0').replace('B', '1')

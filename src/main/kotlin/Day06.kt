@@ -1,4 +1,4 @@
-fun main() {
+fun day06() {
 	val lines = readFileAndProcess("src/main/resources/day06.input") { it }
 
 	val unionSum = sumOfAnyoneAnswers(lines)

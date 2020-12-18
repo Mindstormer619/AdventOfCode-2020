@@ -1,5 +1,5 @@
 
-fun main() {
+fun day10() {
 	val jolts = readFileAndProcess("src/main/resources/day10.input", Integer::parseInt).sorted().toMutableList()
 	jolts += jolts.last() + 3
 	println(jolts)

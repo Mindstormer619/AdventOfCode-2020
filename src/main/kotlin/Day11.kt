@@ -1,4 +1,4 @@
-fun main() {
+fun day11() {
 	val grid = readGrid("src/main/resources/day11.input")
 
 	val occupied = countSeatsOnceStatic(grid.deepClone())

@@ -18,7 +18,7 @@ private fun getComponents(input: String): Components {
 	)
 }
 
-fun main() {
+fun day02() {
 	val input = readFileAndProcess("src/main/resources/day02.input") {getComponents(it)}
 
 	val solution = findValidPasswords(input)

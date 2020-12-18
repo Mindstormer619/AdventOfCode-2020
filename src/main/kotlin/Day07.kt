@@ -13,7 +13,7 @@ private val hasBagRegex = Regex("""(\w+ \w+) bags contain ([0-9].*)\.""")
 private val noBagRegex = Regex("""(\w+ \w+) bags contain no other bags\.""")
 private val bagRegex = Regex("""(\d+) (\w+ \w+) bags?""")
 
-fun main() {
+fun day07() {
 	println(`first part`())
 	println(`second part`())
 }

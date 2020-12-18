@@ -1,4 +1,4 @@
-fun main() {
+fun day03() {
 	val lines = readFileAndProcess("src/main/resources/day03.input") {it}
 
 	val solution = solve(lines)

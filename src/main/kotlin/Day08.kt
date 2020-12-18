@@ -7,7 +7,7 @@ data class Instruction(
 	val value: Int
 )
 
-fun main() {
+fun day08() {
 	val instructionList = readFileAndProcess("src/main/resources/day08.input") {
 		Instruction(
 			InstructionType.valueOf(it.substring(0..2).toUpperCase()),

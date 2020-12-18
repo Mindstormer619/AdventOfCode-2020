@@ -1,4 +1,4 @@
-fun main() {
+fun day04() {
 	val lines = readFileAndProcess("src/main/resources/day04.input") {it}
 
 	val solution = solve(lines, ::checkFieldsPresent)

@@ -1,6 +1,6 @@
 const val preamble = 25
 
-fun main() {
+fun day09() {
 	val numbers = readFileAndProcess("src/main/resources/day09.input") { it.toLong() }
 
 	val brokenNumber = findBrokenNumber(numbers)

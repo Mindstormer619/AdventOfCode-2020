@@ -1,4 +1,4 @@
-fun main() {
+fun day01() {
 	println(System.getProperty("user.dir"))
 	val numList = readFileAndProcess("src/main/resources/day01.input") {Integer.parseInt(it)}
 
