@@ -58,7 +58,6 @@ typealias Complex = Pair<Int, Int>
 i * i = -1
 k * i = ki
 (a + bi) * i = -b + ai
-(15 + 5i) * (i)2 = 30i + 10i^2 =
  */
 infix fun Complex.multiplyI(power: Int): Complex {
 	val rotates = power mod 4
