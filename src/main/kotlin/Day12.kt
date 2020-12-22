@@ -1,7 +1,5 @@
 import kotlin.math.abs
 
-infix fun Int.mod(other: Int) = Math.floorMod(this, other)
-
 class Day12(inputFile: String) {
 	private val turtles: List<Turtle> = readFileAndProcess(inputFile) {
 		Turtle(it[0], Integer.parseInt(it.substring(1)))
