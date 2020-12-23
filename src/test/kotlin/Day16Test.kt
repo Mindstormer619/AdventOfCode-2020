@@ -22,7 +22,7 @@ class Day16Test {
 		day16 = Day16(TestResources.test + "day16_2.input")
 		assertEquals(
 			mapOf("class" to 12, "row" to 11, "seat" to 13),
-			day16.findFields()
+			day16.findTicketFields()
 		)
 	}
 
@@ -31,14 +31,14 @@ class Day16Test {
 		day16 = Day16(TestResources.test + filename)
 		assertEquals(
 			mapOf("row" to 7, "class" to 1, "seat" to 14),
-			day16.findFields()
+			day16.findTicketFields()
 		)
 	}
 
 	@Test
 	fun `run field finder - actual input`() {
 		day16 = Day16(TestResources.main + filename)
-		println(day16.findFields())
-		println(day16.getTicketDeparture(day16.findFields()))
+		println(day16.findTicketFields())
+		println(day16.getTicketDeparture(day16.findTicketFields()))
 	}
 }

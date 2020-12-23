@@ -39,7 +39,7 @@ class Day16(filename: String) {
 		return errorRate
 	}
 
-	fun findFields(): Map<String, Int> {
+	fun findTicketFields(): Map<String, Int> {
 		tickets.removeInvalid()
 
 		val candidateFields = List(fieldMap.size) { mutableSetOf<String>() }
