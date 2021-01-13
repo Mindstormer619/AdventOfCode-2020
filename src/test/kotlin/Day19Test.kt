@@ -16,4 +16,16 @@ class Day19Test {
 		day19 = Day19(TestResources.main + filename)
 		println(day19.countMatchingMessages())
 	}
+
+	@Test
+	fun `test matching messages with recursion - test input`() {
+		day19 = Day19(TestResources.test + "day19_2.input", true)
+		assertEquals(12, day19.countMatchingMessagesWithReplacement())
+	}
+
+	@Test
+	fun `get matching messages with recursion - actual input`() {
+		day19 = Day19(TestResources.main + filename, true)
+		println(day19.countMatchingMessagesWithReplacement())
+	}
 }
