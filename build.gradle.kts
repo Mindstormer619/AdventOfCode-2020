@@ -10,7 +10,8 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    testImplementation(kotlin("test-junit"))
+    implementation("junit:junit:4.13.1")
+	testImplementation(kotlin("test-junit"))
 }
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
